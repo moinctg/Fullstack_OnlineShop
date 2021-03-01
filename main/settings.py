@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'shop'
     
 ]
+AUTH_USER_MODEL = 'account.CustomUser'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
