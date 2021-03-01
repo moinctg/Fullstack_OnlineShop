@@ -28,6 +28,14 @@ class Category(models.Model):
     image = models.ImageField(upload_to='category/', blank=True, null=True)
     date = models.DateField(auto_now_add=True)
 
+
+class Brand(models.Model):
+    title = models.CharField(max_length=150)
+    details = models.TextField(blank=True, null=True)
+    logo = models.ImageField(upload_to='brand/', blank=True, null=True)
+    date = models.DateField(auto_now_add=True)
+
+
 class Product(models.Model):
     title = models.CharField(max_length=160)
     image = models.ImageField(upload_to='products/')
@@ -35,8 +43,7 @@ class Product(models.Model):
     price = models.PositiveIntegerField()
     discount = models.PositiveIntegerField(default=0)
     category = models.ManyToManyField(Category)
-    brand = models.ForeignKey(
-        Brand, on_delete=models.SET_NULL, blank=True, null=True)
+    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, blank=True, null=True)
     details = models.TextField(blank=True, null=True)
     tags = models.TextField(blank=True, null=True)
     date = models.DateField(auto_now_add=True)
@@ -99,8 +106,7 @@ class Slider(models.Model):
     details = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='slider/')
     url = models.TextField(blank=True, null=True)
-    product = models.ForeignKey(
-        Product, on_delete=models.SET_NULL, blank=True, null=True)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
 
 
 class Review(models.Model):
